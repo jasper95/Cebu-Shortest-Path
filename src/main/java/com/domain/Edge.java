@@ -36,6 +36,8 @@ public class Edge implements java.io.Serializable{
     @Column(name="distance", nullable=false, precision=11)
     private BigDecimal distance;
     
+    public Edge(){}
+    
     public Edge(Integer nodeFrom, Integer nodeTo, boolean isOneWay, int trafficLevel) {
         this.nodeFrom = nodeFrom;
         this.nodeTo = nodeTo;

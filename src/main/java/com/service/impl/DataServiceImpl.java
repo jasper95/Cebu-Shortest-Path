@@ -30,7 +30,7 @@ public class DataServiceImpl implements DataService{
     @Autowired
     private VertexRepository vertexRepo;
     @Autowired
-    private ShortestPath sp;
+    private ShortestPath shortestPath;
     
     @Transactional(readOnly=true)
     @Override
@@ -68,6 +68,6 @@ public class DataServiceImpl implements DataService{
             }
             adjList[edges.get((i)).getNodeFrom()-1].add(edges.get(i).getNodeTo()-1);
         }
-        return sp.djisktra(adjList, new BigDecimal[vertices.size()], new ArrayList(), new HashMap(), new ArrayList(), indexIdMap.get(from), indexIdMap.get(to), indexIdMap);
+        return shortestPath.djisktra(adjList, new BigDecimal[vertices.size()], new ArrayList(), new HashMap(), new ArrayList(), indexIdMap.get(from), indexIdMap.get(to), indexIdMap);
     }  
 }

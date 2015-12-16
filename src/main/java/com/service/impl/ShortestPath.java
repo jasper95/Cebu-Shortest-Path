@@ -22,9 +22,9 @@ import org.springframework.stereotype.Service;
  *
  * @author Bert
  */
-@Service
+@Service("shortestPath")
 public class ShortestPath {
-    private static final BigDecimal INF = new BigDecimal("1111111111111111111111111111111111l");
+    private static final BigDecimal INF = new BigDecimal("11111111111111.00");
     @Autowired
     private EdgeRepository edgeRepo;
     @Autowired
