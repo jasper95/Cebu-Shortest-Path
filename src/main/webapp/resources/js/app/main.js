@@ -9,6 +9,7 @@ define(["jquery","gmap"], function($) {
             mapTypeId: google.maps.MapTypeId.ROADMAP
         };
         map = new google.maps.Map(document.getElementById('map'), mapOptions);
+        stepDisplay = new google.maps.InfoWindow();
         $.ajax({
             url: "http://localhost:8084/CMSC142/get-all-vertices-edges",
             success: function(response){

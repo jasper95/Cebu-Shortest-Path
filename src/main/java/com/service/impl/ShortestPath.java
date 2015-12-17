@@ -29,8 +29,9 @@ public class ShortestPath {
     private EdgeRepository edgeRepo;
     @Autowired
     private VertexRepository vertexRepo;
-    public PathAndCost djisktra(ArrayList<Integer>[] adjList, BigDecimal[] distance, ArrayList<Vertex> path, HashMap<Integer, Integer> predecessor, ArrayList<Integer> visited, int src, int des, HashMap<Integer, Integer> indexIdMap){
+    public PathAndCost djisktra(ArrayList<Integer>[] adjList, BigDecimal[] distance,  HashMap<Integer, Integer> predecessor, ArrayList<Integer> visited, int src, int des, HashMap<Integer, Integer> indexIdMap){
         if(src == des){
+            ArrayList<Vertex> path = new ArrayList();
             Integer pred = des;
             while(pred != null){
                 Vertex v = vertexRepo.findOne(indexIdMap.get(pred+1));
@@ -56,7 +57,7 @@ public class ShortestPath {
                 if(!visited.contains(i))
                     unvisited.add(new Node(i, distance[i]));
             }
-            return djisktra(adjList, distance, path, predecessor, visited, unvisited.poll().getIndex(), des, indexIdMap);
+            return djisktra(adjList, distance, predecessor, visited, unvisited.poll().getIndex(), des, indexIdMap);
         }            
     }
 }

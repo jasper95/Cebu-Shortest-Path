@@ -15,4 +15,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
  */
 public interface EdgeRepository extends JpaRepository<Edge, Integer>{
     public List<Edge> findByNodeFromAndNodeTo(Integer nodeFrom, Integer nodeTo);
+    public List<Edge> findByNodeFrom(Integer nodeFrom);
 }
