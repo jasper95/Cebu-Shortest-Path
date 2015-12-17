@@ -30,7 +30,7 @@ public class DataServiceImpl implements DataService{
     @Autowired
     private VertexRepository vertexRepo;
     @Autowired
-    private ShortestPath sp;
+    private ShortestPath shortestPath;
     
     @Transactional(readOnly=true)
     @Override
@@ -53,21 +53,24 @@ public class DataServiceImpl implements DataService{
         HashMap<Integer, Integer> indexIdMap = new HashMap(); //map for index(key), value id 
         ArrayList<Integer> vertexIds = new ArrayList(); //checker if vertex id is in the map
         int src = -1, des = -1;
-        for(int i=0; i < edges.size(); i++){
-            if(edges.get((i)).getNodeFrom().equals(from) && src == -1)
-                src = edges.get((i)).getNodeFrom();
-            if(edges.get((i)).getNodeTo().equals(from) && src == -1)
-                src = edges.get((i)).getNodeTo();
-            if(edges.get(i).getNodeTo().equals(to) && des == -1)
-                des = edges.get(i).getNodeTo();
-            if(edges.get((i)).getNodeFrom().equals(to) && des == -1)
-                des = edges.get((i)).getNodeFrom(); 
-            if(!vertexIds.contains(edges.get((i)).getNodeFrom()-1)){
-                vertexIds.add(edges.get((i)).getNodeFrom()-1);
-                indexIdMap.put(i, edges.get((i)).getNodeFrom()-1);
-            }
-            adjList[edges.get((i)).getNodeFrom()-1].add(edges.get(i).getNodeTo()-1);
+        int ctr=0;
+        for(Vertex v : vertices){
+            if(v.getId().equals(from))
+                src = ctr;
+            if(v.getId().equals(to))
+                des = ctr;
+            indexIdMap.put(v.getId(), ctr);
+            ctr++;
         }
-        return sp.djisktra(adjList, new BigDecimal[vertices.size()], new ArrayList(), new HashMap(), new ArrayList(), indexIdMap.get(from), indexIdMap.get(to), indexIdMap);
+        for(Integer i: indexIdMap.keySet()){
+            List<Edge> neighbors = edgeRepo.findByNodeFrom(i);
+            int index = indexIdMap.get(new Integer(i));
+            for(Edge e: neighbors){
+                adjList[index].add(indexIdMap.get(e.getNodeTo()));
+                if(!e.isIsOneWay())
+                    adjList[indexIdMap.get(e.getNodeTo())].add(index);    
+            }
+        }
+        return shortestPath.djisktra(adjList, new BigDecimal[vertices.size()], new HashMap(), new ArrayList(), indexIdMap.get(from), indexIdMap.get(to), indexIdMap);
     }  
 }

@@ -26,15 +26,17 @@ public class Vertex {
     @Id @GeneratedValue(strategy=IDENTITY)
     @Column(name="id", unique=true, nullable=false)
     private Integer id;
-    @Column(name="lat", nullable=false, precision=59, scale=0)
+    @Column(name="lat", nullable=false, precision=21, scale=0)
     private BigDecimal lat;
-    @Column(name="lng", nullable=false, precision=59, scale=0)
+    @Column(name="lng", nullable=false, precision=21, scale=0)
     private BigDecimal lng;
     @Column(name="is_land_mark", nullable=false)
     private boolean isLandmark;
     @Column(name="name", nullable=false, length=100)
     private String name;
 
+    public Vertex(){ }
+    
     public Vertex(BigDecimal lat, BigDecimal lng, boolean isLandmark, String name) {
         this.lat = lat;
         this.lng = lng;
