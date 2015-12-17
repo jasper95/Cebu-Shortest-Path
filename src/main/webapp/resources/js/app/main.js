@@ -14,19 +14,46 @@ define(["jquery","gmap"], function($) {
             url: "http://localhost:8084/CMSC142/get-all-vertices-edges",
             success: function(response){
                 for(i=0; i <response.vertices.length; i++)
-                    addMarker(response.vertices[i]);
-            }
+                    if(response.vertices[i].isLandmark){
+                        addMarker(response.vertices[i]);
+                        $("#start").append('<option value="'+response.vertices[i].id+'" label="'+response.vertices[i].name+'"/>');
+                        $("#end").append('<option value="'+response.vertices[i].id+'" label="'+response.vertices[i].name+'"/>');
+                    }
+                }
         });
     }
     function addMarker(vertex) {   
-        // Add the marker at the clicked location, and add the next-available label
-        // from the array of alphabetical characters.
         var marker = new google.maps.Marker({
-          position: new google.maps.LatLng(vertex.lat,vertex.lng),
-          title: vertex.name,
-          map: map
+            position: new google.maps.LatLng(vertex.lat,vertex.lng),
+            title: vertex.name,
+            map: map
         });
     }
-    
-    init();    
+    init();
+    $('#start').on('change', function(e){
+        var a = $(this).val();
+        if(a !== "-1"){
+            var b = $("#end").val();  
+            if(b !== "-1"){
+                if(a !== b)
+                    alert("find path")
+            } 
+        }
+    });
+    $('#end').on('change', function(e){
+        var a = $(this).val();
+        if(a !== "-1"){
+            var b = $("#start").val();
+            if(b !== "-1"){
+                if(a !== b)
+                    alert("find path");
+            } 
+        }
+    });
+    function findPath(a, b){
+        
+    }
+    function displayResult(){
+            
+    }
 });
