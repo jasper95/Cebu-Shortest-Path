@@ -9,6 +9,8 @@
 <html>
     <head>
         <spring:url value="/resources/js/" var="js"/>
+        <spring:url value="/resources/css/" var="css"/>
+        <spring:url value="/resources/images/" var="images"/>
         <style>
             html, body, #map{
           height: 100%;
@@ -26,16 +28,40 @@
           border: 1px solid #999;
         }
         </style>
+        <link href="${css}index.css" rel="stylesheet">
+        <link href="${css}bootstrap.min.css" rel="stylesheet">
         <script src="${js}app.js"></script>
         <script src="${js}require.js"></script>        
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>INDEX</title>
         <style>
             body { margin:0; padding:0; }
             #map { position:absolute; top:0; bottom:0; width:100%; }
         </style>
     </head>
     <body>
+        <nav class="navbar navbar-default navbar-fixed-top topnav" role="navigation">
+            <div class="container topnav">
+                
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand topnav logo" href="#"><img src="${images}logo.png" class="logo-up"></a>
+                </div>
+                
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <ul class="nav navbar-nav navbar-right">
+                        
+                    </ul>
+                </div>
+                <!-- /.navbar-collapse -->
+            </div>
+            <!-- /.container -->
+        </nav>  
         <div id="panel">
             <b>Start: </b>
             <select id="start">
