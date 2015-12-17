@@ -11,25 +11,10 @@
         <spring:url value="/resources/js/" var="js"/>
         <spring:url value="/resources/css/" var="css"/>
         <spring:url value="/resources/images/" var="images"/>
-        <style>
-            html, body, #map{
-          height: 100%;
-          margin: 0px;
-          padding: 0px
-        }
-        #panel {
-          position: absolute;
-          top: 5px;
-          left: 50%;
-          margin-left: -180px;
-          z-index: 5;
-          background-color: #fff;
-          padding: 5px;
-          border: 1px solid #999;
-        }
-        </style>
+      
         <link href="${css}index.css" rel="stylesheet">
         <link href="${css}bootstrap.min.css" rel="stylesheet">
+        <link href="${css}bootstrap-select.css" rel="stylesheet">
         <script src="${js}app.js"></script>
         <script src="${js}require.js"></script>        
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -62,18 +47,21 @@
             </div>
             <!-- /.container -->
         </nav>  
-        <div id="panel">
-            <b>Start: </b>
-            <select id="start">
-                <option value="-1">-</option>
-            </select>
-            <b>End: </b>
-            <select id="end">
-                <option value="-1">-</option>
-            </select>
+
+        <div id='map'></div>&nbsp;
+        
+        <div class="row" id="def-margin">
+            <div class="col-sm-2">
+                <select id="start" class="selectpicker show-tick form-control">
+                  <option value="-1">To</option>
+                </select>
+            </div>
+            <div class="col-sm-2">
+                <select id="end" class="selectpicker show-tick form-control">
+                  <option value="-1">From</option>
+                </select>
+            </div>
         </div>
-        <div id='map'></div>
-          &nbsp;
         <div id="warnings_panel" style="width:100%;height:10%;text-align:center"></div>
         <script src="${js}app/test.js"></script>
         <script> </script>
