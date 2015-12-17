@@ -11,7 +11,7 @@ define(["jquery","gmap"], function($) {
         map = new google.maps.Map(document.getElementById('map'), mapOptions);
         stepDisplay = new google.maps.InfoWindow();
         $.ajax({
-            url: "http://localhost:8084/CMSC142/get-all-vertices-edges",
+            url: "http://localhost:8080/CMSC142/get-all-vertices-edges",
             success: function(response){
                 for(i=0; i <response.vertices.length; i++)
                     if(response.vertices[i].isLandmark){
