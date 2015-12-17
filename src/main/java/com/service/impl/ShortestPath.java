@@ -24,7 +24,7 @@ import org.springframework.stereotype.Service;
  */
 @Service
 public class ShortestPath {
-    private static final BigDecimal INF = new BigDecimal("1111111111111111111111111111111111l00");
+    private static final BigDecimal INF = new BigDecimal("1111111111111111111111111111111111l.00");
     @Autowired
     private EdgeRepository edgeRepo;
     @Autowired
