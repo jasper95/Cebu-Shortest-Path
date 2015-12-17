@@ -51,12 +51,12 @@
         <div id='map'></div>&nbsp;
         
         <div class="row" id="def-margin">
-            <div class="col-sm-2">
+            <div class="col-md-offset-7 col-md-2">
                 <select id="start" class="selectpicker show-tick form-control">
                   <option value="-1">To</option>
                 </select>
             </div>
-            <div class="col-sm-2">
+            <div class="col-md-2">
                 <select id="end" class="selectpicker show-tick form-control">
                   <option value="-1">From</option>
                 </select>
