@@ -12,6 +12,7 @@ import java.util.HashMap;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 /**
@@ -33,8 +34,8 @@ public class IndexRestController {
         return new ResponseEntity<HashMap>(response, HttpStatus.OK);
     }
     
-//    @RequestMapping()
-//    public ResponseEntity<PathAndCost> shortestPath(Integer idFrom, Integer idTo){
-//        return new ResponseEntity(dataService.getShortestPath(idFrom, idTo), HttpStatus.OK);
-//    }
+    @RequestMapping("/find-shortest-path/{idFrom}/{idTo}")
+    public ResponseEntity<PathAndCost> shortestPath(@PathVariable("idFrom")Integer idFrom, @PathVariable("idTo")Integer idTo){
+        return new ResponseEntity(dataService.getShortestPath(idFrom, idTo), HttpStatus.OK);
+    }
 }

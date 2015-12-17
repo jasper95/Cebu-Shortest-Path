@@ -39,20 +39,17 @@
         <div id="panel">
             <b>Start: </b>
             <select id="start">
-                <option value="-">-</option>
-                <option value="UP Cebu, Gorordo Avenue, Cebu City, Central Visayas">UP Cebu</option>
+                <option value="-1">-</option>
             </select>
             <b>End: </b>
-            <select id="end" onchange="calcRoute();">
-                <option value="-">-</option>
-                <option value="10.3224, 123.9003">Node 0</option>
-                <option value="Marc and Mattheau's Bakeshop, Cor. Molave St., 459 Gorordo Ave, Dakbayan sa Sugbu 6000">Node 1</option>
-                <option value="PAG-IBIG Fund Cebu Office, Cebu City">Pag-IBIG</option>
+            <select id="end">
+                <option value="-1">-</option>
             </select>
         </div>
         <div id='map'></div>
           &nbsp;
         <div id="warnings_panel" style="width:100%;height:10%;text-align:center"></div>
         <script src="${js}app/test.js"></script>
+        <script> </script>
     </body>
 </html>
